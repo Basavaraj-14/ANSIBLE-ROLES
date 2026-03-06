@@ -1,0 +1,13 @@
+---
+- name: creating ec2 instance
+  amazon.aws.ec2_instance:
+        name: "ansible-instance"
+        instance_type: "{{ type }}"
+        security_group: default
+        state: terminated
+        region: ap-south-1
+        aws_access_key: "{{aws_access_key}}"
+        aws_secret_key: "{{aws_secret_key}}"
+        network_interfaces:
+          - assign_public_ip: true
+        image_id: ami-019715e0d74f695be
