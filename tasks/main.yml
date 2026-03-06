@@ -1,0 +1,19 @@
+---
+# tasks file for http
+- name: installing apache1
+  ansible.builtin.apt:
+     name: apache2
+     state: present
+     update_cache: yes
+- name: copy html wil owner permissions
+  ansible.builtin.copy:
+     src: files/index.html
+     dest: /var/www/html
+     owner: root
+     group: root
+     mode: '0644'
+- name: installing git
+  ansible.builtin.apt:
+     name: git
+     state: present
+     update_cache: yes
